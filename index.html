@@ -4,142 +4,397 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name | Portfolio</title>
-    <style>
-        /* This is basic styling to make it look clean and modern */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333; line-height: 1.6; }
-        header { background: #1a252f; color: #fff; padding: 60px 20px; text-align: center; }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { font-size: 1.2rem; color: #3498db; }
-        .section { max-width: 800px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        h2 { border-bottom: 2px solid #3498db; padding-bottom: 5px; color: #1a252f; }
-        .project-card { background: #f4f6f7; padding: 15px; margin-bottom: 15px; border-left: 5px solid #3498db; border-radius: 4px; }
-        .btn { display: inline-block; background: #3498db; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
-        .btn:hover { background: #2980b9; }
+    <link rel="stylesheet" href="styles.css">
+
+        .hero-content {
+            max-width: 640px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--accent);
+            margin-bottom: 18px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 32px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+            line-height: 1.02;
+        }
+
+        .hero p {
+            max-width: 46rem;
+            margin: 22px 0 0;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .button,
+        .button-secondary {
+            padding: 14px 24px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            color: #0f172a;
+            box-shadow: 0 18px 40px rgba(56, 189, 248, 0.22);
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: var(--text);
+            border-color: rgba(148, 163, 184, 0.35);
+        }
+
+        .hero-graphic {
+            position: relative;
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(18px);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-graphic::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(255,255,255,0.06), transparent 60%);
+            border-radius: inherit;
+        }
+
+        .profile-card {
+            position: relative;
+            z-index: 1;
+            border-radius: 24px;
+            padding: 32px;
+            background: rgba(15, 23, 42, 0.92);
+        }
+
+        .profile-card h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            color: #f8fafc;
+        }
+
+        .profile-card p {
+            color: var(--text-muted);
+            margin: 14px 0 0;
+            line-height: 1.75;
+        }
+
+        .profile-card ul {
+            margin: 22px 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 12px;
+        }
+
+        .profile-card li {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 18px;
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .profile-card li strong {
+            color: var(--text);
+        }
+
+        .section-wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+
+        .section {
+            margin-bottom: 44px;
+            padding: 32px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            font-size: 1.6rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section p {
+            color: var(--text-muted);
+        }
+
+        .grid-2 {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 1.2fr .8fr;
+        }
+
+        .cards {
+            display: grid;
+            gap: 22px;
+        }
+
+        .card {
+            padding: 22px;
+            border-radius: 22px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.35);
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+
+        .card a {
+            display: inline-flex;
+            margin-top: 18px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 24px 0 0;
+        }
+
+        .tag {
+            display: inline-flex;
+            font-size: 0.82rem;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(56, 189, 248, 0.13);
+            color: #bae6fd;
+        }
+
+        .contact-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .contact-card {
+            padding: 22px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+        }
+
+        .contact-card strong {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 16px 24px 40px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 880px) {
+            .grid-2,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 40px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 20px;
+            }
+
+            .hero-content,
+            .hero-graphic {
+                width: 100%;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
-
     <header>
-        <h1>Hi, I'm [Your Name]</h1>
-        <p>Aspiring Developer & Tech Enthusiast</p>
+        <div class="topbar">
+            <div class="logo">YourName</div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+
+        <section class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">Full Stack Developer</span>
+                <h1>Building polished web experiences and scalable digital products.</h1>
+                <p>Hello! I�m a developer who enjoys turning thoughtful ideas into beautiful websites, intuitive apps, and seamless user journeys. My work focuses on front-end craftsmanship, strong design systems, and clean code.</p>
+                <div class="hero-actions">
+                    <a class="button" href="#projects">View Projects</a>
+                    <a class="button-secondary" href="#contact">Get in Touch</a>
+                </div>
+            </div>
+
+            <aside class="hero-graphic">
+                <div class="profile-card">
+                    <h2>Quick overview</h2>
+                    <p>6+ months building responsive sites, interactive interfaces, and elegant landing pages. Comfortable with HTML, CSS, JavaScript, and modern tooling.</p>
+                    <ul>
+                        <li><strong>Location</strong><span>Remote / Global</span></li>
+                        <li><strong>Experience</strong><span>Web Development</span></li>
+                        <li><strong>Available</strong><span>Freelance & Contract</span></li>
+                    </ul>
+                </div>
+            </aside>
+        </section>
     </header>
 
-    <div class="section">
-        <h2>About Me</h2>
-        <p>I am currently a student/beginner learning web development. I love solving problems and turning ideas into actual, functioning websites. Right now, I am focusing on mastering HTML, CSS, and basic JavaScript, while learning how to use tools like GitHub.</p>
-    </div>
+    <main class="section-wrap">
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p>I love building websites that feel fast, polished, and easy to use. My approach blends visual design with practical development so that each project looks great and works reliably across devices. I enjoy collaborating with clients, solving problems, and shipping work that makes an impact.</p>
+        </section>
 
-    <div class="section">
-        <h2>My Projects</h2>
-        
-        <div class="project-card">
-            <h3>Project Title 1</h3>
-            <p>A brief description of what this project is. Explain what tools you used (e.g., "Built using HTML and CSS") and what problem it solves.</p>
-            <a href="#" class="btn">View Project</a>
-        </div>
+        <section id="projects" class="section">
+            <div class="grid-2">
+                <div>
+                    <h2>Featured Projects</h2>
+                    <p>These are some examples of projects I have created to practice real-world web development, UX, and responsive design.</p>
+                </div>
+                <div class="tag-list">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">React</span>
+                    <span class="tag">GitHub</span>
+                </div>
+            </div>
 
-        <div class="project-card">
-            <h3>Project Title 2</h3>
-            <p>Another project or assignment you worked on. Even if it's a simple calculator or a landing page, include it!</p>
-            <a href="#" class="btn">View Project</a>
-        </div>
-    </div>
+            <div class="cards">
+                <article class="card">
+                    <h3>Modern Landing Page</h3>
+                    <p>A responsive website with smooth interactions, custom animations, and a strong visual hierarchy for conversions.</p>
+                    <a href="#">View details ?</a>
+                </article>
+                <article class="card">
+                    <h3>Portfolio Dashboard</h3>
+                    <p>A clean dashboard interface built for tracking progress, project status, and performance metrics.</p>
+                    <a href="#">View details ?</a>
+                </article>
+                <article class="card">
+                    <h3>Interactive UI Components</h3>
+                    <p>Reusable components like cards, buttons, and navigation patterns created with accessibility and responsiveness in mind.</p>
+                    <a href="#">View details ?</a>
+                </article>
+            </div>
+        </section>
 
-    <div class="section">
-        <h2>Get In Touch</h2>
-        <p>I'm always open to connecting, collaborating, or answering questions. Feel free to reach out to me via any of the channels below:</p>
-        <p>📧 <strong>Email:</strong> your.email@example.com</p>
-        <p>🔗 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a></p>
-    </div>
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <p>Focused on front-end development with strong fundamentals in design, performance, and user experience.</p>
+            <div class="cards">
+                <article class="card">
+                    <h3>Front-End</h3>
+                    <p>HTML5, CSS3, Flexbox, Grid, responsive layout, semantic markup, cross-browser support.</p>
+                </article>
+                <article class="card">
+                    <h3>JavaScript</h3>
+                    <p>ES6+, DOM scripting, async patterns, fetch APIs, components, event-driven behavior.</p>
+                </article>
+                <article class="card">
+                    <h3>Tools</h3>
+                    <p>Git, GitHub, VS Code, Chrome DevTools, deployment basics, static hosting workflows.</p>
+                </article>
+            </div>
+        </section>
 
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Portfolio</title>
-    <style>
-        /* This is basic styling to make it look clean and modern */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333; line-height: 1.6; }
-        header { background: #1a252f; color: #fff; padding: 60px 20px; text-align: center; }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { font-size: 1.2rem; color: #3498db; }
-        .section { max-width: 800px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        h2 { border-bottom: 2px solid #3498db; padding-bottom: 5px; color: #1a252f; }
-        .project-card { background: #f4f6f7; padding: 15px; margin-bottom: 15px; border-left: 5px solid #3498db; border-radius: 4px; }
-        .btn { display: inline-block; background: #3498db; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
-        .btn:hover { background: #2980b9; }
-    </style>
-</head>
-<body>
+        <section id="contact" class="section">
+            <div class="grid-2">
+                <div>
+                    <h2>Contact</h2>
+                    <p>If you'd like to collaborate or learn more about my work, send a message and I�ll respond quickly.</p>
+                </div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <strong>Email</strong>
+                    <p>your.email@example.com</p>
+                </div>
+                <div class="contact-card">
+                    <strong>LinkedIn</strong>
+                    <p><a href="https://linkedin.com/in/yourusername" style="color: var(--accent); text-decoration: none;">linkedin.com/in/yourusername</a></p>
+                </div>
+                <div class="contact-card">
+                    <strong>GitHub</strong>
+                    <p><a href="https://github.com/yourusername" style="color: var(--accent); text-decoration: none;">github.com/yourusername</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <header>
-        <h1>Hi, I'm [Your Name]</h1>
-        <p>Aspiring Developer & Tech Enthusiast</p>
-    </header>
+    <footer class="footer">
+        Designed and built with care. Customize this page with your own projects, contact details, and personal branding.
+    </footer>
 
-    <div class="section">
-        <h2>About Me</h2>
-        <p>I am currently a student/beginner learning web development. I love solving problems and turning ideas into actual, functioning websites. Right now, I am focusing on mastering HTML, CSS, and basic JavaScript, while learning how to use tools like GitHub.</p>
-    </div>
-
-    <div class="section">
-        <h2>My Projects</h2>
-        
-        <div class="project-card">
-            <h3>Project Title 1</h3>
-            <p>A brief description of what this project is. Explain what tools you used (e.g., "Built using HTML and CSS") and what problem it solves.</p>
-            <a href="#" class="btn">View Project</a>
-        </div>
-
-        <div class="project-card">
-            <h3>Project Title 2</h3>
-            <p>Another project or assignment you worked on. Even if it's a simple calculator or a landing page, include it!</p>
-            <a href="#" class="btn">View Project</a>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Get In Touch</h2>
-        <p>I'm always open to connecting, collaborating, or answering questions. Feel free to reach out to me via any of the channels below:</p>
-        <p>📧 <strong>Email:</strong> your.email@example.com</p>
-        <p>🔗 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a></p>
-    </div>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background-color: #f4f4f4; color: #333; }
-        header { background: #333; color: #fff; padding: 20px; text-align: center; }
-        .container { background: #fff; padding: 20px; margin-top: 20px; border-radius: 5px; }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-        <p>Hi, I'm a beginner developer learning the ropes!</p>
-    </header>
-
-    <div class="container">
-        <h2>About Me</h2>
-        <p>Write a short paragraph about who you are, what you are studying, and what your goals are.</p>
-        
-        <h2>My Projects</h2>
-        <ul>
-            <li><strong>Project 1:</strong> Description of a cool thing you built or want to build.</li>
-            <li><strong>Project 2:</strong> Another cool assignment or project.</li>
-        </ul>
-
-        <h2>Contact Me</h2>
-        <p>Email: your.email@example.com</p>
-    </div>
-
+    <script src="script.js"></script>
 </body>
 </html>
