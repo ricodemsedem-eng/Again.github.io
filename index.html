@@ -3,398 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-
-        .hero-content {
-            max-width: 640px;
+    <title>Ricodem Sedem | Portfolio</title>
+    <style>
+        /* Modern CSS Reset & Variable Setup */
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8; /* Cyber/Engineering Blue */
+            --accent-hover: #0ea5e9;
         }
 
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            color: var(--accent);
-            margin-bottom: 18px;
-        }
-
-        .eyebrow::before {
-            content: "";
-            width: 32px;
-            height: 1px;
-            background: currentColor;
-        }
-
-        .hero h1 {
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             margin: 0;
-            font-size: clamp(2.5rem, 4.5vw, 4.5rem);
-            line-height: 1.02;
-        }
-
-        .hero p {
-            max-width: 46rem;
-            margin: 22px 0 0;
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        .hero-actions {
-            margin-top: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        .button,
-        .button-secondary {
-            padding: 14px 24px;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .button {
-            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-            color: #0f172a;
-            box-shadow: 0 18px 40px rgba(56, 189, 248, 0.22);
-        }
-
-        .button-secondary {
-            background: transparent;
-            color: var(--text);
-            border-color: rgba(148, 163, 184, 0.35);
-        }
-
-        .hero-graphic {
-            position: relative;
-            padding: 28px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(18px);
-            box-shadow: var(--shadow);
-        }
-
-        .hero-graphic::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: linear-gradient(180deg, rgba(255,255,255,0.06), transparent 60%);
-            border-radius: inherit;
-        }
-
-        .profile-card {
-            position: relative;
-            z-index: 1;
-            border-radius: 24px;
-            padding: 32px;
-            background: rgba(15, 23, 42, 0.92);
-        }
-
-        .profile-card h2 {
-            margin-top: 0;
-            font-size: 1.4rem;
-            color: #f8fafc;
-        }
-
-        .profile-card p {
-            color: var(--text-muted);
-            margin: 14px 0 0;
-            line-height: 1.75;
-        }
-
-        .profile-card ul {
-            margin: 22px 0 0;
             padding: 0;
-            list-style: none;
-            display: grid;
-            gap: 12px;
+            line-height: 1.6;
         }
 
-        .profile-card li {
-            display: flex;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 14px 18px;
-            border: 1px solid rgba(148, 163, 184, 0.12);
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.02);
+        /* Header Section */
+        header {
+            max-width: 800px;
+            margin: 60px auto 20px auto;
+            padding: 20px;
+            text-align: center;
         }
 
-        .profile-card li strong {
-            color: var(--text);
+        header h1 {
+            font-size: 2.8rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            letter-spacing: -0.05em;
         }
 
-        .section-wrap {
-            max-width: 1180px;
-            margin: 0 auto;
-            padding: 0 24px 60px;
-        }
-
-        .section {
-            margin-bottom: 44px;
-            padding: 32px;
-            border-radius: var(--radius);
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
-        }
-
-        .section h2 {
-            margin-top: 0;
-            font-size: 1.6rem;
-            letter-spacing: -0.02em;
-        }
-
-        .section p {
-            color: var(--text-muted);
-        }
-
-        .grid-2 {
-            display: grid;
-            gap: 24px;
-            grid-template-columns: 1.2fr .8fr;
-        }
-
-        .cards {
-            display: grid;
-            gap: 22px;
-        }
-
-        .card {
-            padding: 22px;
-            border-radius: 22px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(148, 163, 184, 0.12);
-            transition: transform 0.25s ease, border-color 0.25s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(56, 189, 248, 0.35);
-        }
-
-        .card h3 {
-            margin: 0 0 10px;
-            font-size: 1.2rem;
-        }
-
-        .card p {
-            margin: 0;
-            color: var(--text-muted);
-        }
-
-        .card a {
-            display: inline-flex;
-            margin-top: 18px;
+        header h1 span {
             color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
         }
 
-        .tag-list {
+        header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        /* Container & Sections */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            background-color: var(--bg-card);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--accent);
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+        }
+
+        p {
+            color: var(--text-muted);
+        }
+
+        /* Tech Badges */
+        .skills-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin: 24px 0 0;
+            margin-top: 15px;
         }
 
-        .tag {
-            display: inline-flex;
-            font-size: 0.82rem;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: rgba(56, 189, 248, 0.13);
-            color: #bae6fd;
-        }
-
-        .contact-grid {
-            display: grid;
-            gap: 20px;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
-        .contact-card {
-            padding: 22px;
+        .badge {
+            background: #334155;
+            color: var(--text-main);
+            padding: 6px 14px;
             border-radius: 20px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(148, 163, 184, 0.12);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid #475569;
         }
 
-        .contact-card strong {
-            display: block;
-            margin-bottom: 10px;
-            color: var(--text);
+        /* Project Cards */
+        .project-card {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
         }
 
-        .footer {
-            text-align: center;
-            padding: 16px 24px 40px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
+        .project-card h3 {
+            margin-top: 0;
+            color: var(--text-main);
         }
 
-        @media (max-width: 880px) {
-            .grid-2,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding-top: 40px;
-            }
+        /* Buttons & Links */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #0f172a;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background 0.2s ease;
         }
 
-        @media (max-width: 640px) {
-            header {
-                padding: 20px;
-            }
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
 
-            .hero-content,
-            .hero-graphic {
-                width: 100%;
-            }
+        .contact-link {
+            color: var(--accent);
+            text-decoration: none;
+        }
 
-            .topbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        .contact-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="topbar">
-            <div class="logo">YourName</div>
-            <nav>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-
-        <section class="hero">
-            <div class="hero-content">
-                <span class="eyebrow">Full Stack Developer</span>
-                <h1>Building polished web experiences and scalable digital products.</h1>
-                <p>Hello! I�m a developer who enjoys turning thoughtful ideas into beautiful websites, intuitive apps, and seamless user journeys. My work focuses on front-end craftsmanship, strong design systems, and clean code.</p>
-                <div class="hero-actions">
-                    <a class="button" href="#projects">View Projects</a>
-                    <a class="button-secondary" href="#contact">Get in Touch</a>
-                </div>
-            </div>
-
-            <aside class="hero-graphic">
-                <div class="profile-card">
-                    <h2>Quick overview</h2>
-                    <p>6+ months building responsive sites, interactive interfaces, and elegant landing pages. Comfortable with HTML, CSS, JavaScript, and modern tooling.</p>
-                    <ul>
-                        <li><strong>Location</strong><span>Remote / Global</span></li>
-                        <li><strong>Experience</strong><span>Web Development</span></li>
-                        <li><strong>Available</strong><span>Freelance & Contract</span></li>
-                    </ul>
-                </div>
-            </aside>
-        </section>
+        <h1>Hi, I'm <span>Ricodem Sedem</span></h1>
+        <p>Aspiring Engineer & Developer</p>
     </header>
 
-    <main class="section-wrap">
-        <section id="about" class="section">
+    <div class="container">
+
+        <section>
             <h2>About Me</h2>
-            <p>I love building websites that feel fast, polished, and easy to use. My approach blends visual design with practical development so that each project looks great and works reliably across devices. I enjoy collaborating with clients, solving problems, and shipping work that makes an impact.</p>
+            <p>I am a beginner developer exploring software and engineering concepts. I enjoy building clean layouts, working with code, and learning how modern technologies function behind the scenes. This portfolio serves as a live tracking sheet of my coding journey.</p>
         </section>
 
-        <section id="projects" class="section">
-            <div class="grid-2">
-                <div>
-                    <h2>Featured Projects</h2>
-                    <p>These are some examples of projects I have created to practice real-world web development, UX, and responsive design.</p>
-                </div>
-                <div class="tag-list">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">React</span>
-                    <span class="tag">GitHub</span>
-                </div>
-            </div>
-
-            <div class="cards">
-                <article class="card">
-                    <h3>Modern Landing Page</h3>
-                    <p>A responsive website with smooth interactions, custom animations, and a strong visual hierarchy for conversions.</p>
-                    <a href="#">View details ?</a>
-                </article>
-                <article class="card">
-                    <h3>Portfolio Dashboard</h3>
-                    <p>A clean dashboard interface built for tracking progress, project status, and performance metrics.</p>
-                    <a href="#">View details ?</a>
-                </article>
-                <article class="card">
-                    <h3>Interactive UI Components</h3>
-                    <p>Reusable components like cards, buttons, and navigation patterns created with accessibility and responsiveness in mind.</p>
-                    <a href="#">View details ?</a>
-                </article>
+        <section>
+            <h2>Skills & Technologies</h2>
+            <p>Here are the core tools and languages I'm actively working with:</p>
+            <div class="skills-grid">
+                <span class="badge">HTML5</span>
+                <span class="badge">CSS3</span>
+                <span class="badge">Git</span>
+                <span class="badge">GitHub Pages</span>
+                <span class="badge">VS Codespaces</span>
             </div>
         </section>
 
-        <section id="skills" class="section">
-            <h2>Skills</h2>
-            <p>Focused on front-end development with strong fundamentals in design, performance, and user experience.</p>
-            <div class="cards">
-                <article class="card">
-                    <h3>Front-End</h3>
-                    <p>HTML5, CSS3, Flexbox, Grid, responsive layout, semantic markup, cross-browser support.</p>
-                </article>
-                <article class="card">
-                    <h3>JavaScript</h3>
-                    <p>ES6+, DOM scripting, async patterns, fetch APIs, components, event-driven behavior.</p>
-                </article>
-                <article class="card">
-                    <h3>Tools</h3>
-                    <p>Git, GitHub, VS Code, Chrome DevTools, deployment basics, static hosting workflows.</p>
-                </article>
+        <section>
+            <h2>Featured Projects</h2>
+            
+            <div class="project-card">
+                <h3>My Personal Portfolio Site</h3>
+                <p>The very website you are looking at right now! Built from scratch using modern semantic HTML5 and custom CSS styling. Hosted globally using GitHub Pages.</p>
+                <a href="https://github.com/ricodemsedem-eng" target="_blank" class="btn">View Source Code</a>
             </div>
+
+            </section>
+
+        <section>
+            <h2>Connect With Me</h2>
+            <p>I'm always open to talking about tech, collaborative projects, or learning opportunities.</p>
+            <p>📧 <strong>Email:</strong> <a class="contact-link" href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <p>🐙 <strong>GitHub:</strong> <a class="contact-link" href="https://github.com/ricodemsedem-eng" target="_blank">github.com/ricodemsedem-eng</a></p>
         </section>
 
-        <section id="contact" class="section">
-            <div class="grid-2">
-                <div>
-                    <h2>Contact</h2>
-                    <p>If you'd like to collaborate or learn more about my work, send a message and I�ll respond quickly.</p>
-                </div>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <strong>Email</strong>
-                    <p>your.email@example.com</p>
-                </div>
-                <div class="contact-card">
-                    <strong>LinkedIn</strong>
-                    <p><a href="https://linkedin.com/in/yourusername" style="color: var(--accent); text-decoration: none;">linkedin.com/in/yourusername</a></p>
-                </div>
-                <div class="contact-card">
-                    <strong>GitHub</strong>
-                    <p><a href="https://github.com/yourusername" style="color: var(--accent); text-decoration: none;">github.com/yourusername</a></p>
-                </div>
-            </div>
-        </section>
-    </main>
+    </div>
 
-    <footer class="footer">
-        Designed and built with care. Customize this page with your own projects, contact details, and personal branding.
-    </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
